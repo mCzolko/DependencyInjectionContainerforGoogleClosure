@@ -2,13 +2,13 @@
 	@fileroverview Dependency Injection Container
 	@author Michael Czolok <michael@czolko.cz>
 ###
-goog.provide 'app.di.Container'
-goog.provide 'app.di.Container.build'
+goog.provide 'dependencyInjection.Container'
+goog.provide 'dependencyInjection.Container.get'
 
-goog.require 'app.di.config'
+goog.require 'dependencyInjection.config'
 
 
-class app.di.Container
+class dependencyInjection.Container
 
 
 	###*
@@ -27,8 +27,10 @@ class app.di.Container
 	get: (key) ->
 		key = new String key
 		key = key.toLowerCase()
+
 		if @config[key] == undefined
 			throw 'Service with key "' + key + '" not found in configuration file'
+
 		if @instances[key] == undefined
 			service = @create @config[key]
 			@set key, new service
@@ -106,7 +108,7 @@ class app.di.Container
 			inst = new Temp
 
 			# Call the original Constructor with the temp
-	        # instance as its context (i.e. its 'this' value)
+			# instance as its context (i.e. its 'this' value)
 			ret = constructor.apply(inst, args)
 
 			# If an object has been returned then return it otherwise
@@ -116,7 +118,6 @@ class app.di.Container
 			return inst
 
 
-app.di.Container.build = ->
-	config = app.di.config
-	new app.di.Container config
+dependencyInjection.Container.get = (config = dependencyInjection.config) ->
+	new dependencyInjection.Container config
 

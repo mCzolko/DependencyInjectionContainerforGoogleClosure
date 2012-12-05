@@ -4,13 +4,13 @@
 	@author Michael Czolok <michael@czolko.cz>
 */
 
-goog.provide('app.di.Container');
+goog.provide('dependencyInjection.Container');
 
-goog.provide('app.di.Container.build');
+goog.provide('dependencyInjection.Container.get');
 
-goog.require('app.di.config');
+goog.require('dependencyInjection.config');
 
-app.di.Container = (function() {
+dependencyInjection.Container = (function() {
   /**
   		@construct
   */
@@ -127,8 +127,9 @@ app.di.Container = (function() {
 
 })();
 
-app.di.Container.build = function() {
-  var config;
-  config = app.di.config;
-  return new app.di.Container(config);
+dependencyInjection.Container.get = function(config) {
+  if (config == null) {
+    config = dependencyInjection.config;
+  }
+  return new dependencyInjection.Container(config);
 };
