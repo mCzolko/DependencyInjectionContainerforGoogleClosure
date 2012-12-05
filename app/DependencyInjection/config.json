@@ -1,0 +1,14 @@
+{
+	"messenger": {
+		"class":      "app.Messenger",
+		"arguments":  ["@consoleLogger", "@alerter"]
+	}, 
+
+	"consoleLogger": {
+		"class":      "app.ConsoleLogger"
+	}, 
+
+	"alerter": {
+		"class":      "app.Alerter"
+	}
+}
