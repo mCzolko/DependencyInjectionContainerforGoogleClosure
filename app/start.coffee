@@ -1,12 +1,12 @@
 goog.provide 'app.start'
 
-goog.require 'dependencyInjection.Container.get'
+goog.require 'DI.Container.get'
 
 
 class app.start
 
 	constructor: ->
-		@container = dependencyInjection.Container.get()
+		@container = DI.Container.get()
 		messenger = @container.get 'messenger'
 		messenger.showError 'Yes'
 

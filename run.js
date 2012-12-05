@@ -13,7 +13,7 @@ di_write_file = dir + 'app/DependencyInjection/config.coffee';
 
 spacer = '	';
 
-namespace = 'dependencyInjection.config';
+namespace = 'DI.config';
 
 /**
 	Require modules

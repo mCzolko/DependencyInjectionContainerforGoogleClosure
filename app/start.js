@@ -2,13 +2,13 @@
 
 goog.provide('app.start');
 
-goog.require('dependencyInjection.Container.get');
+goog.require('DI.Container.get');
 
 app.start = (function() {
 
   function start() {
     var messenger;
-    this.container = dependencyInjection.Container.get();
+    this.container = DI.Container.get();
     messenger = this.container.get('messenger');
     messenger.showError('Yes');
   }

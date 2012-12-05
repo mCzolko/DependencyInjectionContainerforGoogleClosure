@@ -2,13 +2,13 @@
 	@fileroverview Dependency Injection Container
 	@author Michael Czolok <michael@czolko.cz>
 ###
-goog.provide 'dependencyInjection.Container'
-goog.provide 'dependencyInjection.Container.get'
+goog.provide 'DI.Container'
+goog.provide 'DI.Container.get'
 
-goog.require 'dependencyInjection.config'
+goog.require 'DI.config'
 
 
-class dependencyInjection.Container
+class DI.Container
 
 
 	###*
@@ -118,6 +118,6 @@ class dependencyInjection.Container
 			return inst
 
 
-dependencyInjection.Container.get = (config = dependencyInjection.config) ->
-	new dependencyInjection.Container config
+DI.Container.get = (config = DI.config) ->
+	new DI.Container config
 

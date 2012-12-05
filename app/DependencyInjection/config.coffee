@@ -1,4 +1,4 @@
-goog.provide 'dependencyInjection.config'
+goog.provide 'DI.config'
 
 goog.require 'app.Messenger'
 goog.require 'app.ConsoleLogger'
@@ -22,4 +22,4 @@ lowerKeys = (config) ->
 		config[key.toLowerCase()] = service
 	return config
 
-dependencyInjection.config = lowerKeys config
+DI.config = lowerKeys config

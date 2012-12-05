@@ -5,7 +5,7 @@ dir = './'
 di_config_file = dir + 'app/DependencyInjection/config.json'
 di_write_file = dir + 'app/DependencyInjection/config.coffee'
 spacer = '	'
-namespace = 'dependencyInjection.config'
+namespace = 'DI.config'
 
 
 ###*
