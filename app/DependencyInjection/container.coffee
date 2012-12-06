@@ -15,7 +15,7 @@ class DI.Container
 		@construct
 	###
 	constructor: (@config) ->
-		@instances = new Array
+		@services = new Array
 		@set 'service_container', @
 
 
@@ -28,14 +28,14 @@ class DI.Container
 		key = new String key
 		key = key.toLowerCase()
 
-		if @instances[key] == undefined
+		if @services[key] == undefined
 			if @config[key] == undefined
 				throw 'Service with key "' + key + '" not found in configuration file'
 
 			service = @create @config[key]
 			@set key, new service
 
-		return @instances[key]
+		return @services[key]
 
 
 
@@ -46,7 +46,7 @@ class DI.Container
 	###
 	has: (key) ->
 		key = new String key
-		@instances[key.toLowerCase()] == undefined
+		@services[key.toLowerCase()] == undefined
 
 
 	###*
@@ -57,7 +57,7 @@ class DI.Container
 	###
 	set: (key, service) ->
 		key = new String key
-		@instances[key.toLowerCase()] = service
+		@services[key.toLowerCase()] = service
 
 
 	###*

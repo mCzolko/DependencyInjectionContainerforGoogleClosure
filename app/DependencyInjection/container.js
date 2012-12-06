@@ -17,7 +17,7 @@ DI.Container = (function() {
 
   function Container(config) {
     this.config = config;
-    this.instances = new Array;
+    this.services = new Array;
     this.set('service_container', this);
   }
 
@@ -32,14 +32,14 @@ DI.Container = (function() {
     var service;
     key = new String(key);
     key = key.toLowerCase();
-    if (this.config[key] === void 0) {
-      throw 'Service with key "' + key + '" not found in configuration file';
-    }
-    if (this.instances[key] === void 0) {
+    if (this.services[key] === void 0) {
+      if (this.config[key] === void 0) {
+        throw 'Service with key "' + key + '" not found in configuration file';
+      }
       service = this.create(this.config[key]);
       this.set(key, new service);
     }
-    return this.instances[key];
+    return this.services[key];
   };
 
   /**
@@ -51,7 +51,7 @@ DI.Container = (function() {
 
   Container.prototype.has = function(key) {
     key = new String(key);
-    return this.instances[key.toLowerCase()] === void 0;
+    return this.services[key.toLowerCase()] === void 0;
   };
 
   /**
@@ -64,7 +64,7 @@ DI.Container = (function() {
 
   Container.prototype.set = function(key, service) {
     key = new String(key);
-    return this.instances[key.toLowerCase()] = service;
+    return this.services[key.toLowerCase()] = service;
   };
 
   /**
