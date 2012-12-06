@@ -28,10 +28,10 @@ class DI.Container
 		key = new String key
 		key = key.toLowerCase()
 
-		if @config[key] == undefined
-			throw 'Service with key "' + key + '" not found in configuration file'
-
 		if @instances[key] == undefined
+			if @config[key] == undefined
+				throw 'Service with key "' + key + '" not found in configuration file'
+
 			service = @create @config[key]
 			@set key, new service
 
